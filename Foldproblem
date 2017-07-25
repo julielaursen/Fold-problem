@@ -1,0 +1,44 @@
+folds = ['R', 'L', 'R']
+
+def LeftFold(paper):
+    left = paper[0:(len(paper))/2]
+    K = len(paper)/2
+    right = paper[K:]
+    left.reverse()
+    for i in left:
+        i.reverse()
+    final = []
+    print left
+    print right
+    for i in range(K):
+        final.append(left[i] + right[i])
+    return final
+
+def rightFold(paper):
+    left = paper[0:(len(paper))/2]
+    K = len(paper)/2
+    right = paper[K:]
+    right.reverse()
+    for i in right:
+        i.reverse()
+    final = []
+    for i in range(K):
+        final.append(right[i] + left[i])
+    return final
+
+def PaperFold(folds):
+    n = len(folds)
+    paperlength = 2**n
+    paper = []
+    for i in range(paperlength):
+        paper.append([i + 1])
+    print paper
+    for f in folds:
+        if f == "L":
+            paper = LeftFold(paper)
+            print paper
+        else:
+            paper = rightFold(paper)
+            print paper
+
+PaperFold(folds)
